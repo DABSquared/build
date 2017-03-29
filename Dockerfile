@@ -13,6 +13,7 @@ ENV PAGER more
 WORKDIR /tmp
 
 RUN apk --no-cache add \
+      zip \
       bash \
       bash-completion \
       groff \
