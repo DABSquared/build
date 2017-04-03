@@ -26,6 +26,7 @@ RUN apk --no-cache add \
     pip install --upgrade \
       awscli \
       pip \
+      awsebcli \
       python-dateutil &&\
     ln -s /usr/bin/aws_bash_completer /etc/profile.d/aws_bash_completer.sh &&\
     curl -sSL --output ${S3_TMP} https://github.com/s3tools/s3cmd/archive/master.zip &&\
