@@ -42,8 +42,8 @@ RUN apk --no-cache add \
 # Expose volume for adding credentials
 VOLUME ["~/.aws"]
 
-ENV TERRAFORM_VERSION=0.10.4
-ENV TERRAFORM_SHA256SUM=cff83f669d0e4ac315e792a57659d5aae8ea1fcfdca6931c7cc4679b4e6c60e3
+ENV TERRAFORM_VERSION=0.11.0
+ENV TERRAFORM_SHA256SUM=402b4333792967986383670134bb52a8948115f83ab6bda35f57fa2c3c9e9279
 
 RUN apk add --update git curl openssh && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
@@ -99,7 +99,7 @@ RUN addgroup -g 1000 node \
     && rm -Rf "node-v$NODE_VERSION" \
     && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
 
-ENV YARN_VERSION 1.2.1
+ENV YARN_VERSION 1.3.2
 
 RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && for key in \
