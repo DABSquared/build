@@ -42,8 +42,8 @@ RUN apk --no-cache add \
 # Expose volume for adding credentials
 VOLUME ["~/.aws"]
 
-ENV TERRAFORM_VERSION=0.11.0
-ENV TERRAFORM_SHA256SUM=402b4333792967986383670134bb52a8948115f83ab6bda35f57fa2c3c9e9279
+ENV TERRAFORM_VERSION=0.11.3
+ENV TERRAFORM_SHA256SUM=6b8a7b83954597d36bbed23913dd51bc253906c612a070a21db373eab71b277b
 
 RUN apk add --update git curl openssh && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
@@ -54,7 +54,7 @@ RUN apk add --update git curl openssh && \
 
 
 ######Node
-ENV NODE_VERSION 8.9.0
+ENV NODE_VERSION 9.6.1
 
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
