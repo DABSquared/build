@@ -43,8 +43,8 @@ RUN apk --no-cache add \
 # Expose volume for adding credentials
 VOLUME ["~/.aws"]
 
-ENV TERRAFORM_VERSION=0.11.3
-ENV TERRAFORM_SHA256SUM=6b8a7b83954597d36bbed23913dd51bc253906c612a070a21db373eab71b277b
+ENV TERRAFORM_VERSION=0.11.5
+ENV TERRAFORM_SHA256SUM=131c440263382c79c7f783b70ff35cd1d03eb31c44f7738d153d95a0b8436ac9
 
 RUN apk add --update git curl openssh && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
