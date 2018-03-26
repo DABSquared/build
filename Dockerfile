@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine
+FROM openjdk:9-alpine
 
 LABEL maintainer "dbrooks@dabsquared.com"
 
