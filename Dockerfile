@@ -1,4 +1,4 @@
-FROM cantara/alpine-openjdk-jdk9:latest #openjdk:9-alpine
+FROM cantara/alpine-openjdk-jdk9:latest
 
 LABEL maintainer "dbrooks@dabsquared.com"
 
