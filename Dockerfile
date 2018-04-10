@@ -12,6 +12,10 @@ ENV PAGER more
 
 WORKDIR /tmp
 
+RUN   apk update \                                                                                                                                                                                                                        
+  &&   apk add ca-certificates wget \                                                                                                                                                                                                      
+  &&   update-ca-certificates   
+
 RUN apk --no-cache add \
       zip \
       bash \
