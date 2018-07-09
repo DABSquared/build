@@ -1,4 +1,4 @@
-FROM openjdk:latest
+FROM openjdk:10
 
 LABEL maintainer "dbrooks@dabsquared.com"
 
