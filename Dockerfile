@@ -13,10 +13,11 @@ ENV PAGER more
 WORKDIR /tmp
 
 RUN   apt-get update \                                                                                                                                                                                                                        
-  &&   apt-get install ca-certificates wget \                                                                                                                                                                                                      
+  &&   apt-get install -y ca-certificates wget \                                                                                                                                                                                                      
   &&   update-ca-certificates   
 
-RUN apt-get install \
+RUN apt-get update \                                                                                                                                                                                                                        
+    &&  apt-get install -y \
       zip \
       bash \
       bash-completion \
@@ -24,10 +25,10 @@ RUN apt-get install \
       less \
       curl \
       jq \
-      py-pip \
+      python-pip \
       python \
       sshpass \
-      openssh &&\
+      openssh-server &&\
     pip install --upgrade \
       awscli \
       pip \
@@ -50,10 +51,10 @@ VOLUME ["~/.aws"]
 ENV TERRAFORM_VERSION=0.11.7
 ENV TERRAFORM_SHA256SUM=6b8ce67647a59b2a3f70199c304abca0ddec0e49fd060944c26f666298e23418
 
-RUN apt-get install git curl openssh && \
+RUN apt-get install -y git curl openssh-server && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     echo "${TERRAFORM_SHA256SUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
-    sha256sum -cs terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
+    sha256sum terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
@@ -125,7 +126,7 @@ RUN set -ex \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
 
-ENV MAVEN_VERSION 3.5.3
+ENV MAVEN_VERSION 3.5.4
 ENV MAVEN_HOME /usr/lib/mvn
 ENV PATH $MAVEN_HOME/bin:$PATH
 
