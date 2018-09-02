@@ -28,6 +28,7 @@ RUN apt-get update \
       python-pip \
       python \
       sshpass \
+      fakeroot \
       openssh-server &&\
     pip install --upgrade \
       awscli \
@@ -48,8 +49,8 @@ RUN apt-get update \
 # Expose volume for adding credentials
 VOLUME ["~/.aws"]
 
-ENV TERRAFORM_VERSION=0.11.7
-ENV TERRAFORM_SHA256SUM=6b8ce67647a59b2a3f70199c304abca0ddec0e49fd060944c26f666298e23418
+ENV TERRAFORM_VERSION=0.11.8
+ENV TERRAFORM_SHA256SUM=84ccfb8e13b5fce63051294f787885b76a1fedef6bdbecf51c5e586c9e20c9b7
 
 RUN apt-get install -y git curl openssh-server && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
@@ -81,7 +82,7 @@ RUN set -ex \
     gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
   done
 
-ENV NODE_VERSION 10.6.0
+ENV NODE_VERSION 10.9.0
 
 RUN buildDeps='xz-utils' \
     && ARCH= && dpkgArch="$(dpkg --print-architecture)" \
@@ -106,7 +107,7 @@ RUN buildDeps='xz-utils' \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-ENV YARN_VERSION 1.7.0
+ENV YARN_VERSION 1.9.4
 
 RUN set -ex \
   && for key in \
