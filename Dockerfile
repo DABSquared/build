@@ -1,6 +1,6 @@
 FROM openjdk:10
 
-LABEL maintainer "dbrooks@dabsquared.com"
+LABEL maintainer "bass_rock@me.com"
 
 ENV S3_TMP /tmp/s3cmd.zip
 ENV S3_ZIP /tmp/s3cmd-master
